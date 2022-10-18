@@ -1,15 +1,12 @@
 import React from "react";
-import {Navbar, Posts} from "./"
+import { Navbar, Posts, Register } from "./";
 const Main = () => {
   return (
     <div id="main">
-    <div id="navbar">
-      <div>Stranger Thing's</div>
+      <Navbar />
+      {/* <Posts /> */}
+    <Register/>
     </div>
-    <div id="container">
-      {/* your components here */}
-    </div>
-  </div>
   );
 };
 
