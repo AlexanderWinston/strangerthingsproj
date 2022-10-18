@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { Register } from "./"
 
 const Login = (props) => {
+    handleLoginClick();{
+        this.useState({isLoggedIn: true});
+    }
     async function handleSubmit(event) {
         event.preventDefault()
         const username = event.target[0].value
@@ -19,7 +22,7 @@ const Login = (props) => {
         <input id="loginUsername" type="text" required />
         <label htmlFor="loginPassword" >Password: </label>
         <input id="loginPassword" type='password' />
-        <button type="submit">Login</button> 
+        <button onClick= {props.onClick} type="submit">Login</button> 
       </form>
     </div>
         </div>

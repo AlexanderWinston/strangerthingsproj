@@ -5,6 +5,7 @@ const Main = () => {
     <div id="main">
       <Navbar />
       <Register/>
+    <br/>
       <Posts />
     <br/>
     <Login/>

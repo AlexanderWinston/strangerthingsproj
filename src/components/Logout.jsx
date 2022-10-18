@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState}  from "react";
+
 
 const Logout = () => {
+    handleLogoutClick();{
+        this.useState({isLoggedIn: false});
+    }
     return (
         <div>
-            <h3>Logout</h3>
+            <button onClick= {props.onClick} id='logoutBtn' >Logout</button>
         </div>
     );
 };
