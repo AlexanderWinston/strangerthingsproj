@@ -15,8 +15,6 @@ export async function registerUser(username, password) {
             'Content-Type': 'application/json'
         }, body: JSON.stringify({
             user: {
-                username: 'NicholasZehr',
-                password: 'supersneakypass',
                 username,
                 password
             }
@@ -30,4 +28,23 @@ export async function registerUser(username, password) {
 
 }
 
+export async function loginUser(username, password) {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }, body: JSON.stringify({
+            user: {
+                username,
+                password
+            }
+        })
+    }
+    const response = await fetch(`${BASE_URL}/api/${COHORT}/users/login`, options)
+    const result = await response.json()
+    console.log(result)
+    return result.data
+
+
+}
 

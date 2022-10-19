@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import { Register } from "./"
+import { loginUser } from "../api-adapter";
+
 
 const Login = (props) => {
-    handleLoginClick();{
-        this.useState({isLoggedIn: true});
-    }
+   
     async function handleSubmit(event) {
         event.preventDefault()
         const username = event.target[0].value
         const password = event.target[1].value
-        const registeredUser = await registerUser(username, password)
-        const token = registeredUser.token
+        const loggedInUser = await loginUser(username, password)
+        const token = loggedInUser.token
         localStorage.removeItem('token')
         localStorage.setItem('token', token)
     }
