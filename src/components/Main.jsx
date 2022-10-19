@@ -14,6 +14,7 @@ const Main = () => {
     <Login setIsLoggedIn = {setIsLoggedIn}/>
     <LoggedIn isLoggedIn = {isLoggedIn}/>
     <Logout setIsLoggedIn = {setIsLoggedIn}/>
+  
     </div>
   );
 };
