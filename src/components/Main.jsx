@@ -9,7 +9,7 @@ const Main = () => {
       <Posts />
     <br/>
     <Login/>
-    {/* <Logout/> */}
+    <Logout/>
     </div>
   );
 };

@@ -1,39 +1,23 @@
 import React, {useEffect, useState}  from "react";
+import { Register } from "./";
 
-
-const Logout = ({
-    userList, currentUser
-}) => {
-    const [selectedUser, setSelectedUser] = useState();
-    useEffect(() => {
-        setSelectedUser(userList[0]);
-    }, [userList]);
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        
-      }
+const Logout = (props) => {
     
-      const handleSelectChange = (event) => {
-        const id = event.target.value;
-        const user = userList.find(user => user.id == id);
-        setSelectedUser(user);
-    
-      }
-      const handleUserLogout = (event) => {
-        setSelectedUser(userList[0]);
-        clearCurrentUser();
-        setCurrentUser(null);
-    
-      }
-
+    async function clearUser(){
+    localStorage.removeItem('token')
+    localStorage.setItem('token', token)
+    console.log(clearUser, 'clear')
+      
+    }
     
       return (
           <div>
-            <button onClick= { handleSelectChange } id='logoutBtn' >Logout</button>
-        </div>
+            <form onSubmit={clearUser}>
+            <button onClick= { props.onClick } id='logoutBtn' type="submit" >Logout</button>
+            </form>
+        </div> 
     );
-    ;
+    
+    
 }
-
 export default Logout;
