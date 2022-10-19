@@ -5,6 +5,7 @@ const Logout = (props) => {
     
     async function clearUser(){
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
     localStorage.setItem('token', token)
     console.log(clearUser, 'clear')
       

@@ -1,6 +1,9 @@
-import React from "react";
-import { Navbar, Posts, Register, Login, Logout } from "./";
+import React, { useState } from "react";
+import { Navbar, Posts, Register, Login, Logout, LoggedIn } from "./";
 const Main = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  
   return (
     <div id="main">
       <Navbar />
@@ -9,6 +12,7 @@ const Main = () => {
       <Posts />
     <br/>
     <Login/>
+    <LoggedIn/>
     <Logout/>
     </div>
   );
