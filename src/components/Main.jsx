@@ -7,13 +7,13 @@ const Main = () => {
   return (
     <div id="main">
       <Navbar />
-      <Register/>
+      <Register setIsLoggedIn = {setIsLoggedIn}/>
     <br/>
       <Posts />
     <br/>
-    <Login/>
-    <LoggedIn/>
-    <Logout/>
+    <Login setIsLoggedIn = {setIsLoggedIn}/>
+    <LoggedIn isLoggedIn = {isLoggedIn}/>
+    <Logout setIsLoggedIn = {setIsLoggedIn}/>
     </div>
   );
 };

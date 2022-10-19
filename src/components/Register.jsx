@@ -1,12 +1,14 @@
 import React from "react";
 import { registerUser } from "../api-adapter";
 const Register = (props) => {
+  const setIsLoggedIn = props.setIsLoggedIn
     async function handleSubmit(event) {
         event.preventDefault()
         const username = event.target[0].value
         const password = event.target[1].value
         const registeredUser = await registerUser(username, password)
         const token = registeredUser.token
+        setIsLoggedIn(true)
         localStorage.removeItem('token')
         localStorage.setItem('token', token)
     }

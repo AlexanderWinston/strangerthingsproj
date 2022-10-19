@@ -3,18 +3,18 @@ import { Register } from "./";
 
 const Logout = (props) => {
     
-    async function clearUser(){
+    async function clearUser(event){
+        event.preventDefault()
     localStorage.removeItem('token')
     localStorage.removeItem('user')
-    localStorage.setItem('token', token)
-    console.log(clearUser, 'clear')
+    props.setIsLoggedIn(false)
       
     }
     
       return (
           <div>
             <form onSubmit={clearUser}>
-            <button onClick= { props.onClick } id='logoutBtn' type="submit" >Logout</button>
+            <button id='logoutBtn' type="submit" >Logout</button>
             </form>
         </div> 
     );
