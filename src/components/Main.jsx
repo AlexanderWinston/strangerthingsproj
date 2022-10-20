@@ -23,7 +23,7 @@ const Main = () => {
       <Route path="/" element={<Navbar />}>
         <Route path="posts" element={<Posts />}>
           <Route path=":id" element={<PostDetails />}></Route>
-          <Route path ='SinglePost' element={<SinglePost/>}></Route>
+          <Route path ="SinglePost" element={<SinglePost/>}></Route>
         </Route>
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />

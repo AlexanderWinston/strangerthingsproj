@@ -15,7 +15,7 @@ const Register = (props) => {
         localStorage.setItem('token', token)
     }
   return (
-    <div className={'box'}>
+    <div className={'register-box'}>
       
       <form onSubmit={handleSubmit}>
         <label htmlFor="username" >Username: </label>

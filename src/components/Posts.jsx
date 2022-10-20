@@ -9,7 +9,7 @@ const Posts = (props) => {
         async function fetchPosts() {
             const allPosts = await getPosts()
             setAllPosts(allPosts)
-            console.log(fetchPosts, "this is a message")
+            // console.log(fetchPosts, "this is a message")
         }
         fetchPosts()
     }, [])
@@ -20,10 +20,10 @@ const Posts = (props) => {
         })
     }
 return (
-    <div className='posts'>{`This is your Posts Component`} 
+    <div className='posts'> 
         {id ? <Outlet context={filterPosts()} /> :
             posts.length ? posts.map((post) => {
-                console.log(post)
+                // console.log(post)
                 return <SinglePost key={`post-id-${post._id}`} post={post} />
         }) : <div>Loading Your Posts</div>
         }

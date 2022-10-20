@@ -75,3 +75,9 @@ img {
   border-radius: 5px;
 }
 
+.box{
+  border: solid black;
+  border-radius: 10px;
+  padding: .5em;
+  margin-bottom: 1em;
+}
