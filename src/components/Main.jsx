@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Navbar, Posts, Register, Login, Logout, LoggedIn, makeHeader } from "./";
+import { Navbar, Posts, Register, Login, Logout, LoggedIn, SinglePost } from "./";
+import { Link } from "react-router-dom";
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -14,9 +15,11 @@ const Main = () => {
     <Login setIsLoggedIn = {setIsLoggedIn}/>
     <LoggedIn isLoggedIn = {isLoggedIn}/>
     <Logout setIsLoggedIn = {setIsLoggedIn}/>
+    <SinglePost />
   
     </div>
   );
 };
 
 export default Main;
+
