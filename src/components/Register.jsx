@@ -2,6 +2,8 @@ import React from "react";
 import { registerUser } from "../api-adapter";
 const Register = (props) => {
   const setIsLoggedIn = props.setIsLoggedIn
+  const isLoggedInToo = props.isLoggedInToo
+  console.log(props)
     async function handleSubmit(event) {
         event.preventDefault()
         const username = event.target[0].value
@@ -13,7 +15,7 @@ const Register = (props) => {
         localStorage.setItem('token', token)
     }
   return (
-    <div className="box">
+    <div className={ isLoggedInToo ? 'hideRegister' : 'box'}>
       
       <form onSubmit={handleSubmit}>
         <label htmlFor="username" >Username: </label>
@@ -27,3 +29,4 @@ const Register = (props) => {
 };
 
 export default Register;
+

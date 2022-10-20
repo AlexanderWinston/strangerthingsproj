@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Posts, Register, Login, Logout, LoggedIn } from "./";
+import { Navbar, Posts, Register, Login, Logout, LoggedIn, makeHeader } from "./";
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -7,9 +7,9 @@ const Main = () => {
   return (
     <div id="main">
       <Navbar />
-      <Register setIsLoggedIn = {setIsLoggedIn}/>
+      <Register setIsLoggedIn = {setIsLoggedIn} isLoggedInToo= {isLoggedIn}/>
     <br/>
-      <Posts />
+      <Posts setIsLoggedIn = {setIsLoggedIn}/>
     <br/>
     <Login setIsLoggedIn = {setIsLoggedIn}/>
     <LoggedIn isLoggedIn = {isLoggedIn}/>
