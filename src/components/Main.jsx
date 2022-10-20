@@ -8,6 +8,7 @@ import {
   LoggedIn,
   SinglePost,
   PostDetails,
+  CreatePost
 } from "./";
 import {
   createBrowserRouter,
@@ -21,9 +22,12 @@ const Main = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
-        <Route path="posts" element={<Posts />}>
+        <Route index element={<Posts />}/>
+        <Route path="posts" >
+          <Route index element={<Posts />}/>
           <Route path=":id" element={<PostDetails />}></Route>
           <Route path ="SinglePost" element={<SinglePost/>}></Route>
+          <Route path ="create" element={<CreatePost/>}></Route>
         </Route>
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
@@ -33,14 +37,15 @@ const Main = () => {
 
   return (
     <div id="main">
-      <Navbar />
+      <RouterProvider router={router}></RouterProvider>
+      {/* <Navbar />
       <Register setIsLoggedIn={setIsLoggedIn} isLoggedInToo={isLoggedIn} />
       <br />
       <Posts setIsLoggedIn={setIsLoggedIn} />
       <br />
       <Login setIsLoggedIn={setIsLoggedIn} />
       <LoggedIn isLoggedIn={isLoggedIn} />
-      <Logout setIsLoggedIn={setIsLoggedIn} />
+      <Logout setIsLoggedIn={setIsLoggedIn} /> */}
     </div>
   );
 };
