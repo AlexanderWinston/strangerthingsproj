@@ -12,14 +12,15 @@ const PostDetails = (props) => {
         willDeliver: true,
     })
     useEffect(() => {
+      if(post){
     setFormDetails(
         {
             title: post.title,
             description: post.description,
             price: post.price,
             location: post.location,
-        })
-    },[])
+        })}
+    },[post])
     function handleChange(e) {
         e.preventDefault()
         const toUpdate = e.target.id
@@ -42,6 +43,7 @@ const PostDetails = (props) => {
     }
   return (
       <>
+
       {post ? (<>
         <div className="box">
           <div>{post.title} </div>

@@ -1,11 +1,14 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
     <div id="navbar">
       <h2> Stranger's Things</h2>
+      <Link to="/login">Login</Link>
+      <Link to="/register">Register</Link>
+      <Link to="/posts">Posts</Link>
     </div>
     <Outlet />
     </div>

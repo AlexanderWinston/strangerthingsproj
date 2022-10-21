@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Navbar,
   Posts,
@@ -18,17 +18,34 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import { getPosts } from "../api-adapter";
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [posts, setAllPosts] = useState([])
+
+  useEffect(() => {
+      async function fetchPosts() {
+          const allPosts = await getPosts()
+          setAllPosts(allPosts)
+          // console.log(fetchPosts, "this is a message")
+      }
+      fetchPosts()
+  }, [])
+
+  function filterPosts(id) {
+      return posts.filter((post) => {
+          return post._id == id
+      })
+  }
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
         <Route path="register" element={<Register />}/>
         <Route path="login" element={<Login />} />
-        <Route index element={<Posts />}/>
+        <Route index element={<Posts posts={posts}/>}/>
         <Route path="posts" >
-          <Route index element={<Posts />}/>
-          <Route path=":id" element={<PostDetails />}></Route>
+          <Route index element={<Posts posts={posts} />}/>
+          <Route path=":id" element={<PostDetails filterPosts={filterPosts} />}></Route>
           <Route path ="SinglePost" element={<SinglePost/>}></Route>
           <Route path ="create" element={<CreatePost/>}></Route>
         </Route>

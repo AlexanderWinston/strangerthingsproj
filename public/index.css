@@ -81,3 +81,10 @@ img {
   padding: .5em;
   margin-bottom: 1em;
 }
+#navbar > a{
+  color: white;
+  padding: 20px;
+  text-decoration: none;
+  border: 2px solid white;
+  border-radius: 10px;
+}

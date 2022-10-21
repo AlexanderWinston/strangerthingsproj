@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {createPost} from '../api-adapter';
 
 export default function CreatePost() {
 
@@ -24,7 +25,7 @@ export default function CreatePost() {
           <input placeholder='location' value={location}
         onChange={(e) => setLocation(e.target.value)} label='Location'
         />  
-        <button type='submit'>Submit</button>
+        <button type='submit' >Submit</button>
         </form>
     </div>
   )
