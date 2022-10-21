@@ -37,7 +37,7 @@ const PostDetails = (props) => {
     const token = localStorage.getItem("token");
     const deleted = await deletePost(toDelete, token);
 
-    const allPostsMinusDeletedPost = allPosts.filter(post => post.id != toDelete )
+    const allPostsMinusDeletedPost = allPosts.filter(post => post._id != toDelete )
     setAllPosts(allPostsMinusDeletedPost)
     navigate('/posts')
     console.log(deleted);

@@ -89,3 +89,16 @@ export async function deletePost(id, token) {
     const result = await response.json()
     return result
 }
+export async function getUser (token) {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+	const response = await fetch(`${BASE_URL}/api/${COHORT}/users/me`, options)
+	const result = await response.json()
+	return result.data;
+
+}

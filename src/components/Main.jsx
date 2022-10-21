@@ -10,6 +10,7 @@ import {
   PostDetails,
   CreatePost,
   Search,
+  Profile
 } from "./";
 import {
   createBrowserRouter,
@@ -56,6 +57,7 @@ const Main = () => {
           <Route path="create" element={<CreatePost fetchPosts={fetchPosts} />}></Route>
           {/* <Route path="search" element={<Search/>}></Route> */}
         </Route>
+        <Route path='Profile' element={<Profile/>}/>
       </Route>
     )
   );
