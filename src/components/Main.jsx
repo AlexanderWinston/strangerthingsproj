@@ -19,7 +19,7 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
-import { getPosts } from "../api-adapter";
+import { deletePost, getPosts } from "../api-adapter";
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [posts, setAllPosts] = useState([]);
@@ -32,6 +32,8 @@ const Main = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  
 
   function filterPosts(id) {
     return posts.filter((post) => {
@@ -48,11 +50,11 @@ const Main = () => {
           <Route index element={<Posts posts={posts} />} />
           <Route
             path=":id"
-            element={<PostDetails filterPosts={filterPosts} />}
+            element={<PostDetails filterPosts={filterPosts} deletePost={deletePost} posts={posts} setAllPosts={setAllPosts}/>}
           ></Route>
           <Route path="SinglePost" element={<SinglePost />}></Route>
           <Route path="create" element={<CreatePost fetchPosts={fetchPosts} />}></Route>
-          <Route path="search" element={<Search/>}></Route>
+          {/* <Route path="search" element={<Search/>}></Route> */}
         </Route>
       </Route>
     )

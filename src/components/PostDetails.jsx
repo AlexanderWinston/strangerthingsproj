@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate, Navigate, } from "react-router-dom";
 import { updatePost, deletePost } from "../api-adapter";
 const PostDetails = (props) => {
   const { id } = useParams();
   const post = props.filterPosts(id)[0];
+  const allPosts = props.posts
+  const setAllPosts = props.setAllPosts
+  const navigate = useNavigate()
   const [formDetails, setFormDetails] = useState({
     title: "",
     description: "",
@@ -33,6 +36,10 @@ const PostDetails = (props) => {
     const toDelete = e.target.id;
     const token = localStorage.getItem("token");
     const deleted = await deletePost(toDelete, token);
+
+    const allPostsMinusDeletedPost = allPosts.filter(post => post.id != toDelete )
+    setAllPosts(allPostsMinusDeletedPost)
+    navigate('/posts')
     console.log(deleted);
   }
   async function handleSubmit(e) {
