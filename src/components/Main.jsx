@@ -16,12 +16,15 @@ import {
   RouterProvider,
   Route,
   Link,
+  useParams
 } from "react-router-dom";
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
+        <Route path="register" element={<Register />}/>
+        <Route path="login" element={<Login />} />
         <Route index element={<Posts />}/>
         <Route path="posts" >
           <Route index element={<Posts />}/>
@@ -29,8 +32,6 @@ const Main = () => {
           <Route path ="SinglePost" element={<SinglePost/>}></Route>
           <Route path ="create" element={<CreatePost/>}></Route>
         </Route>
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
       </Route>
     )
   );

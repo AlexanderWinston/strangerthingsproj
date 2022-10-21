@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import { useOutletContext, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { updatePost, deletePost } from "../api-adapter";
 const PostDetails = (props) => {
-  const context = useOutletContext();
-  const post = context[0];
+    const { id } = useParams()
+  const post = props.filterPosts(id)[0];
     const [formDetails, setFormDetails] = useState({
         title: '',
         description: '',
@@ -12,15 +12,14 @@ const PostDetails = (props) => {
         willDeliver: true,
     })
     useEffect(() => {
-        post?
     setFormDetails(
         {
             title: post.title,
             description: post.description,
             price: post.price,
             location: post.location,
-        }): null
-    },[post])
+        })
+    },[])
     function handleChange(e) {
         e.preventDefault()
         const toUpdate = e.target.id
