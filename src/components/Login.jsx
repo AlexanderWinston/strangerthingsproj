@@ -3,19 +3,19 @@ import { Register, isLoggedIn } from "./";
 import { loginUser } from "../api-adapter";
 
 const Login = (props) => {
-    const setIsLoggedIn = props.setIsLoggedIn
+  const setIsLoggedIn = props.setIsLoggedIn;
   async function handleSubmit(event) {
     event.preventDefault();
     const username = event.target[0].value;
     const password = event.target[1].value;
     const loggedInUser = await loginUser(username, password);
     const token = loggedInUser.token;
-    setIsLoggedIn(true)
+    setIsLoggedIn(true);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    localStorage.setItem('user', username);
+    localStorage.setItem("user", username);
     localStorage.setItem("token", token);
-    }
+  }
   return (
     <div>
       <div className="box">
@@ -28,7 +28,6 @@ const Login = (props) => {
             Login
           </button>
         </form>
-        
       </div>
     </div>
   );

@@ -8,7 +8,8 @@ import {
   LoggedIn,
   SinglePost,
   PostDetails,
-  CreatePost
+  CreatePost,
+  Search,
 } from "./";
 import {
   createBrowserRouter,
@@ -16,38 +17,42 @@ import {
   RouterProvider,
   Route,
   Link,
-  useParams
+  useParams,
 } from "react-router-dom";
 import { getPosts } from "../api-adapter";
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [posts, setAllPosts] = useState([])
+  const [posts, setAllPosts] = useState([]);
+  async function fetchPosts() {
+    const allPosts = await getPosts();
+    setAllPosts(allPosts);
+    // console.log(fetchPosts, "this is a message")
+  }
 
   useEffect(() => {
-      async function fetchPosts() {
-          const allPosts = await getPosts()
-          setAllPosts(allPosts)
-          // console.log(fetchPosts, "this is a message")
-      }
-      fetchPosts()
-  }, [])
+    fetchPosts();
+  }, []);
 
   function filterPosts(id) {
-      return posts.filter((post) => {
-          return post._id == id
-      })
+    return posts.filter((post) => {
+      return post._id == id;
+    });
   }
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
-        <Route path="register" element={<Register />}/>
-        <Route path="login" element={<Login />} />
-        <Route index element={<Posts posts={posts}/>}/>
-        <Route path="posts" >
-          <Route index element={<Posts posts={posts} />}/>
-          <Route path=":id" element={<PostDetails filterPosts={filterPosts} />}></Route>
-          <Route path ="SinglePost" element={<SinglePost/>}></Route>
-          <Route path ="create" element={<CreatePost/>}></Route>
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route index element={<Posts posts={posts} />} />
+        <Route path="posts">
+          <Route index element={<Posts posts={posts} />} />
+          <Route
+            path=":id"
+            element={<PostDetails filterPosts={filterPosts} />}
+          ></Route>
+          <Route path="SinglePost" element={<SinglePost />}></Route>
+          <Route path="create" element={<CreatePost fetchPosts={fetchPosts} />}></Route>
+          <Route path="search" element={<Search/>}></Route>
         </Route>
       </Route>
     )
