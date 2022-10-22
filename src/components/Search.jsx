@@ -1,28 +1,49 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 
-// const search = (props) => {
-// 	const allPosts = props.allPosts;
-// 	const [search, setSearch] = useState('');
-// 	const [posts, setPosts] = useState([]);
-// 	useEffect(()=>{
-// 		setSearch(allPosts);
-// 	  }, [allPosts]);
-// 	function postMatches(post, text) {
+const search = (props) => {
+	const allPosts = props.allPosts;
+    const [posts, setPosts] = useState([]);
+	const [searchTerm, setSearchTerm] = useState('');
+	
+	useEffect(()=>{
+		setSearchTerm(allPosts);
+	  }, [allPosts]);
+	function postMatches(post, text) {
 		
-// 	const filteredPosts = posts.filter(post => postMatches(post, search));
-// 	const postToDisplay = search.length ? filteredPosts : posts;
+	const filteredPosts = posts.filter(post => postMatches(post, search));
+	const postToDisplay = search.length ? filteredPosts : post;
+    }
 
-// 	}
-// 	return (
-// 		<div className="searchBar">
-//       <label htmlFor="search">Search: </label>
-//       <input onChange={handleChange} />
-//     </div>
-// 	  );
-// }
+	
+    const handleChange = (e) => {
+        e.preventDefault();
+        searchPosts(e.target.value);
+      };
+
+      const searchPosts = (searchValue) => {
+        if (searchValue !== ""){
+            const filteredPosts = allPosts.filter(post => {
+                return post.name.toLowerCase().includes(searchValue.toLowerCase());
+            });
+
+            setPosts(filteredPosts);
+        }
+        else {
+            setPosts(allPosts);
+        }
+      }
+
+	return (
+		<div className="box">
+      <label htmlFor="search">Search: </label>
+      <input onChange={handleChange} />
+    </div>
+	  );
+}
  
-// export default Search;
+export default search;
+
 
 
 

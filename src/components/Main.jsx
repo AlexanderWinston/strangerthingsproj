@@ -10,7 +10,8 @@ import {
   PostDetails,
   CreatePost,
   Search,
-  Profile
+  Profile,
+  SearchResult
 } from "./";
 import {
   createBrowserRouter,
@@ -55,7 +56,8 @@ const Main = () => {
           ></Route>
           <Route path="SinglePost" element={<SinglePost />}></Route>
           <Route path="create" element={<CreatePost fetchPosts={fetchPosts} />}></Route>
-          {/* <Route path="search" element={<Search/>}></Route> */}
+          <Route path="search" element={<Search/>} />
+          <Route path="searchResult" element={<SearchResult/>} />
         </Route>
         <Route path='Profile' element={<Profile/>}/>
       </Route>
@@ -65,14 +67,6 @@ const Main = () => {
   return (
     <div id="main">
       <RouterProvider router={router}></RouterProvider>
-      {/* <Navbar />
-      <Register setIsLoggedIn={setIsLoggedIn} isLoggedInToo={isLoggedIn} />
-      <br />
-      <Posts setIsLoggedIn={setIsLoggedIn} />
-      <br />
-      <Login setIsLoggedIn={setIsLoggedIn} />
-      <LoggedIn isLoggedIn={isLoggedIn} />
-      <Logout setIsLoggedIn={setIsLoggedIn} /> */}
     </div>
   );
 };
