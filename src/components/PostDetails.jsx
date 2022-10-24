@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate, Navigate, } from "react-router-dom";
-import { updatePost, deletePost } from "../api-adapter";
+import { updatePost, deletePost, createMessage } from "../api-adapter";
 const PostDetails = (props) => {
   const { id } = useParams();
   const post = props.filterPosts(id)[0];
@@ -42,6 +42,17 @@ const PostDetails = (props) => {
     navigate('/posts')
     console.log(deleted);
   }
+
+  
+
+  async function newMessage(e){
+    e.preventDefault();
+    const id = e.target[0].id;
+    const newMessage = e.target[0].value;
+    const token = localStorage.getItem('token');
+    console.log(e)
+    const responseNewMessage = await createMessage(newMessage, id, token)
+  console.log(responseNewMessage)} 
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("submitted");
@@ -82,6 +93,16 @@ const PostDetails = (props) => {
             >
               Delete Post
             </button>
+            <form onSubmit={newMessage}>
+              <input id={post._id ? `${post._id}` : null}></input>
+
+              <button type="submit">Send Message</button>
+            </form>
+            <button 
+            id={post._id ? `${post._id}` : null}
+            onClick={(e) => {
+              newMessage(e)
+            }}>Message Author</button>
           </div>
         </>
       ) : (

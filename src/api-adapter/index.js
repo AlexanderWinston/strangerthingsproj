@@ -91,14 +91,32 @@ export async function deletePost(id, token) {
 }
 export async function getUser (token) {
     const options = {
-        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         }
     }
 	const response = await fetch(`${BASE_URL}/api/${COHORT}/users/me`, options)
+    console.log(response)
 	const result = await response.json()
 	return result.data;
+
+}
+export async function createMessage(message, id, token) {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }, body: JSON.stringify({
+        message :{
+            content: message
+        }
+        })
+    }
+    console.log(id)
+	const response = await fetch(`${BASE_URL}/api/${COHORT}/posts/${id}/messages`, options)
+	const result = await response.json()
+	return result;
 
 }
